@@ -333,15 +333,11 @@ Or simply open the notebook using **Google Colab**.
 ```text
 Health-Insurance-Recommendation
 
-│── notebook/
-│      Health_Insurance_Recommendation.ipynb
+│──Health_Insurance_Recommendation.ipynb
 
-│── data/
-│      insurance.csv
+│── Insurance.csv
 
-│── images/
-
-│── requirements.txt
+│── Result_images/
 
 │── README.md
 
