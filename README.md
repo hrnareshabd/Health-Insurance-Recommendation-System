@@ -214,38 +214,90 @@ The system correctly classified **5 out of 6** customer profiles.
 
 ---
 
-# 📷 Project Screenshots
+# 📸 Result Images
 
-In the **Project Output** Folder
+This project generates multiple visualizations during Exploratory Data Analysis (EDA), Model Training, Hyperparameter Tuning, and Model Evaluation.
 
-Added screenshots in the **Project Output** Folder.
+📂 **View all screenshots here →** **[Result_Images](Result_Images/)**
 
-```text
-images/
+---
 
-Dataset.png
+## 📊 Dataset Overview
 
-Feature Correlation Matrix.png
+![Dataset Overview](Result_Images/Dataset.png)
 
-COMPREHENSIVE MODEL COMPARISON.png
+*Figure 1: Sample of the health insurance dataset showing key features like age, sex, bmi, children, smoker, region, and charges.*
 
-BoxPlot Grouped by Recommendation.png
+---
 
-Model Comparison.png
+## 🔗 Feature Correlation Matrix
 
-LIME Explaination.png
+![Feature Correlation Matrix](Result_Images/Feature%20Correlation%20Matrix%20.png)
 
-TOP 5 Model Comparison.png
+*Figure 2: Correlation heatmap showing relationships between numerical features.*
 
-FEATURE IMPORTANCE ANALYSIS.png
+---
 
-HyperParameter Tuning For 7 Model.png
+## 📈 Comprehensive Model Comparison
 
-HyperParameter Tuning For 7 Model 2.png
+![Model Comparison](Result_Images/COMPREHENSIVE%20MODEL%20COMPARISON.png)
 
-Test Summary.ong
+*Figure 3: Performance comparison of all 7 machine learning models across multiple metrics (Accuracy, F1 Score, Precision, Recall, ROC-AUC).*
 
-Final Recomendation.png
+---
+
+## 🔍 Feature Importance Analysis
+
+![Feature Importance Analysis](Result_Images/FEATURE%20IMPORTANCE%20ANALYSIS.png)
+
+*Figure 4: Top features influencing insurance charge predictions with their importance scores.*
+
+---
+
+## 🎯 Final Recommendation
+
+![Final Recommendation](Result_Images/Final%20Recomendation.png)
+
+*Figure 5: Final model recommendation showing the best performing algorithm for deployment.*
+
+---
+
+## 📊 Additional Visualizations
+
+### Confusion Matrices
+
+![Confusion Matrices](Result_Images/Confusion%20Matrices.png)
+
+*Figure 6: Confusion matrices for all 7 models showing prediction accuracy per class.*
+
+---
+
+### ROC-AUC Curves
+
+![ROC Curves](Result_Images/ROC%20Curves.png)
+
+*Figure 7: ROC-AUC curves comparing model performance across different threshold values.*
+
+---
+
+### SHAP Summary Plot
+
+![SHAP Summary](Result_Images/SHAP%20Summary.png)
+
+*Figure 8: SHAP feature importance summary showing the impact of each feature on predictions.*
+
+---
+
+### LIME Explanation
+
+![LIME Explanation](Result_Images/LIME%20Explanation.png)
+
+*Figure 9: Local interpretable model-agnostic explanations (LIME) for a single prediction.*
+
+---
+
+## 📁 Folder Structure
+
 ```
 
 
