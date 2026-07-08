@@ -208,7 +208,9 @@ The system correctly classified **5 out of 6** customer profiles.
 
 # 📷 Project Screenshots
 
-Add screenshots from your notebook in the **images** folder.
+In the **Project Output** Folder
+
+Added screenshots in the **Project Output** Folder.
 
 ```text
 images/
@@ -238,12 +240,11 @@ Test Summary.ong
 Final Recomendation.png
 ```
 
-Then display them like this:
 
 ```markdown
 ## Model Comparison
 
-![Models](images/model_comparison.png)
+![Models](Project Output/TOP 5 Model Comparison.png)
 ```
 
 ---
@@ -267,7 +268,7 @@ Then display them like this:
 # ▶ Installation
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/Health-Insurance-Recommendation.git
+git clone https://github.com/hrnareshabd/Health-Insurance-Recommendation.git
 
 cd Health-Insurance-Recommendation
 
