@@ -21,9 +21,17 @@
 
 # 📌 Project Overview
 
-Choosing the right health insurance plan is often difficult because medical expenses depend on several factors such as **age, BMI, smoking habits, number of children, and geographic region**.
+Health insurance plays a crucial role in protecting individuals from unexpected medical expenses. However, determining insurance costs and selecting an appropriate plan is a complex process influenced by multiple demographic, lifestyle, and health-related factors. Variables such as **age, Body Mass Index (BMI), smoking status, number of dependents, and geographical region** significantly affect insurance premiums and risk assessment.
 
-This project develops a **Machine Learning-based Health Insurance Recommendation System** that predicts insurance charge categories using customer demographic and health information.
+The objective of this project is to develop an **intelligent Machine Learning-based Health Insurance Recommendation System** capable of predicting whether an individual is likely to fall into a **High Insurance Charges** or **Low Insurance Charges** category. Based on this prediction, the system provides a recommendation that can assist users in understanding their expected insurance cost category and support more informed healthcare planning.
+
+The project follows a complete **end-to-end Machine Learning lifecycle**, beginning with data exploration and preprocessing, followed by feature engineering, model training, hyperparameter optimization, performance evaluation, and prediction. Seven state-of-the-art Machine Learning algorithms were implemented and compared to identify the most effective model for the problem.
+
+To improve model performance, hyperparameter tuning was performed for every algorithm using cross-validation. The trained models were evaluated using multiple performance metrics, including **Accuracy, F1-Score, ROC-AUC, and Cross-Validation Score**, ensuring a robust and unbiased comparison.
+
+Among all evaluated algorithms, **CatBoost** achieved the best overall performance with an **Accuracy of 94.78%**, **F1-Score of 0.9453**, and **ROC-AUC of 0.9439**, making it the final model used in the recommendation system.
+
+The final system was validated using multiple realistic customer profiles representing different demographic and health conditions. The recommendation engine correctly predicted **5 out of 6 test scenarios**, achieving an overall recommendation accuracy of **83.3%**.
 
 The project demonstrates an end-to-end Machine Learning workflow including:
 
