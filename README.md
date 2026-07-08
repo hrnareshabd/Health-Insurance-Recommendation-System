@@ -296,19 +296,6 @@ This project generates multiple visualizations during Exploratory Data Analysis 
 
 ---
 
-## 📁 Folder Structure
-
-```
-
-
-```markdown
-## Model Comparison
-
-![Models](Project Output/TOP 5 Model Comparison.png)
-```
-
----
-
 # 🛠 Technologies Used
 
 * Python
