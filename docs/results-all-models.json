@@ -1,0 +1,103 @@
+{
+  "selected_model": "CatBoost",
+  "selection_rule": "Highest mean training CV F1; test evaluated after selection",
+  "charge_threshold": 9290.1395,
+  "threshold_rule": "High Charges iff charges > training-partition median",
+  "rows_after_deduplication": 1337,
+  "train_rows": 1069,
+  "test_rows": 268,
+  "seed": 42,
+  "cv_folds": 3,
+  "cv_comparison": [
+    {
+      "model": "CatBoost",
+      "cv_f1": 0.9278343006989225,
+      "cv_f1_std": 0.01253524177091113,
+      "parameters": {
+        "model__depth": 6
+      }
+    },
+    {
+      "model": "Random Forest",
+      "cv_f1": 0.9226404289655891,
+      "cv_f1_std": 0.00327749302855133,
+      "parameters": {
+        "model__max_depth": null
+      }
+    },
+    {
+      "model": "SVM",
+      "cv_f1": 0.9225406334680356,
+      "cv_f1_std": 0.011452532371815014,
+      "parameters": {
+        "model__C": 1
+      }
+    },
+    {
+      "model": "XGBoost",
+      "cv_f1": 0.9170965950521777,
+      "cv_f1_std": 0.0061076750569214935,
+      "parameters": {
+        "model__max_depth": 3
+      }
+    },
+    {
+      "model": "LightGBM",
+      "cv_f1": 0.9126212197517952,
+      "cv_f1_std": 0.006264402401158237,
+      "parameters": {
+        "model__num_leaves": 15
+      }
+    },
+    {
+      "model": "Logistic Regression",
+      "cv_f1": 0.9037993993730536,
+      "cv_f1_std": 0.010250109434527511,
+      "parameters": {
+        "model__C": 10.0
+      }
+    },
+    {
+      "model": "KNN",
+      "cv_f1": 0.8860965200598797,
+      "cv_f1_std": 0.004946588419538,
+      "parameters": {
+        "model__n_neighbors": 11
+      }
+    },
+    {
+      "model": "Dummy baseline",
+      "cv_f1": 0.0,
+      "cv_f1_std": 0.0,
+      "parameters": {}
+    }
+  ],
+  "test_metrics": {
+    "accuracy": 0.9477611940298507,
+    "f1": 0.9477611940298507,
+    "roc_auc": 0.9608778093804027,
+    "confusion_matrix": [
+      [
+        127,
+        2
+      ],
+      [
+        12,
+        127
+      ]
+    ]
+  },
+  "dataset_sha256": "6e3894cf7d9210613f62c866684055decea694345cd4f244ecd7167041578c68",
+  "versions": {
+    "python": "3.12.14",
+    "numpy": "1.26.4",
+    "pandas": "2.3.3",
+    "scikit-learn": "1.6.1",
+    "scipy": "1.15.3",
+    "joblib": "1.6.0",
+    "catboost": "1.2.10",
+    "lightgbm": "4.7.0",
+    "xgboost": "3.4.1"
+  },
+  "limitations": "Educational charge classification; no plan ranking or calibrated probabilities."
+}

@@ -216,3 +216,9 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+
+# Generated project outputs
+artifacts/
+catboost_info/
+.DS_Store
