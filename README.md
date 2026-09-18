@@ -1,387 +1,164 @@
-# 🏥 Health Insurance Recommendation System using Machine Learning
-
-<div align="center">
-
-![Python](https://img.shields.io/badge/Python-3.11-blue?logo=python)
-![Google Colab](https://img.shields.io/badge/Google-Colab-F9AB00?logo=googlecolab)
-![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-ML-orange?logo=scikitlearn)
-![CatBoost](https://img.shields.io/badge/CatBoost-Best%20Model-yellow)
-![License](https://img.shields.io/badge/License-MIT-green)
-![Status](https://img.shields.io/badge/Status-Completed-success)
-
 # Health Insurance Recommendation System
 
-### End-to-End Machine Learning Project for Insurance Charge Prediction & Recommendation
+**An educational machine-learning project for classifying insurance charges.**
 
-*A complete Machine Learning pipeline that predicts whether a customer is likely to incur **High** or **Low** insurance charges and provides a recommendation based on the prediction.*
+[![Tests](https://github.com/hrnareshabd/Health-Insurance-Recommendation-System/actions/workflows/tests.yml/badge.svg)](https://github.com/hrnareshabd/Health-Insurance-Recommendation-System/actions/workflows/tests.yml)
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/hrnareshabd/Health-Insurance-Recommendation-System/blob/main/notebooks/health_insurance_analysis.ipynb)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-</div>
+This project explores whether six demographic and lifestyle features can predict
+charges above or below a training-data threshold. It includes an exploratory notebook,
+reusable training and prediction code, model comparison, saved evaluation metadata,
+and automated regression tests.
 
----
+The repository keeps its original name, but the current dataset supports **charge
+classification**, not selection of real insurance plans. This is a portfolio/research
+prototype, not a validated insurance or medical decision tool.
 
-# 📌 Project Overview
+## Start here
 
-Health insurance plays a crucial role in protecting individuals from unexpected medical expenses. However, determining insurance costs and selecting an appropriate plan is a complex process influenced by multiple demographic, lifestyle, and health-related factors. Variables such as **age, Body Mass Index (BMI), smoking status, number of dependents, and geographical region** significantly affect insurance premiums and risk assessment.
+- **Try it:** [open the maintained notebook in Colab](https://colab.research.google.com/github/hrnareshabd/Health-Insurance-Recommendation-System/blob/main/notebooks/health_insurance_analysis.ipynb), run the setup cell, then **Runtime → Run all**. The setup downloads this repository and installs dependencies. Save a copy to Drive to edit it.
+- **Understand it:** read the [methodology and limitations](docs/METHODOLOGY.md) and [dataset notes](docs/DATA.md).
+- **Share insights:** [open an improvement issue](https://github.com/hrnareshabd/Health-Insurance-Recommendation-System/issues/new?template=insight.md).
+- **Contribute:** read [CONTRIBUTING.md](CONTRIBUTING.md) and choose a task from the [roadmap](docs/ROADMAP.md).
 
-The objective of this project is to develop an **intelligent Machine Learning-based Health Insurance Recommendation System** capable of predicting whether an individual is likely to fall into a **High Insurance Charges** or **Low Insurance Charges** category. Based on this prediction, the system provides a recommendation that can assist users in understanding their expected insurance cost category and support more informed healthcare planning.
-
-The project follows a complete **end-to-end Machine Learning lifecycle**, beginning with data exploration and preprocessing, followed by feature engineering, model training, hyperparameter optimization, performance evaluation, and prediction. Seven state-of-the-art Machine Learning algorithms were implemented and compared to identify the most effective model for the problem.
-
-To improve model performance, hyperparameter tuning was performed for every algorithm using cross-validation. The trained models were evaluated using multiple performance metrics, including **Accuracy, F1-Score, ROC-AUC, and Cross-Validation Score**, ensuring a robust and unbiased comparison.
-
-Among all evaluated algorithms, **CatBoost** achieved the best overall performance with an **Accuracy of 94.78%**, **F1-Score of 0.9453**, and **ROC-AUC of 0.9439**, making it the final model used in the recommendation system.
-
-The final system was validated using multiple realistic customer profiles representing different demographic and health conditions. The recommendation engine correctly predicted **5 out of 6 test scenarios**, achieving an overall recommendation accuracy of **83.3%**.
-
-The project demonstrates an end-to-end Machine Learning workflow including:
-
-* Data Collection
-* Data Cleaning
-* Exploratory Data Analysis
-* Feature Engineering
-* Hyperparameter Tuning
-* Model Training
-* Model Evaluation
-* Prediction System
-
----
-
-# 🚀 Project Highlights
-
-* ✅ Built using **Python** and **Google Colab**
-* ✅ Dataset containing **1,338 customer records**
-* ✅ Compared **7 Machine Learning Algorithms**
-* ✅ Applied Hyperparameter Tuning
-* ✅ Selected the Best Performing Model
-* ✅ Built an Insurance Recommendation Pipeline
-* ✅ Tested on Multiple Realistic User Profiles
-
----
-
-# 📊 Dataset Information
-
-| Property        | Value                         |
-| --------------- | ----------------------------- |
-| Dataset Size    | **1,338 Records**             |
-| Features        | **6 Input Features + Target** |
-| Missing Values  | **None**                      |
-| Target Variable | Insurance Charges             |
-| Binary Target   | High Charges / Low Charges    |
-
-### Features
-
-* Age
-* Sex
-* BMI
-* Children
-* Smoker
-* Region
-
-Target Variable
-
-* Insurance Charges
-
-For model training, the target was converted into a binary classification problem:
-
-* **High Charges**
-* **Low Charges**
-
-using the median insurance charge (**$9,382.03**) as the threshold.
-
----
-
-# ⚙ Machine Learning Workflow
+## Workflow
 
 ```text
-Dataset
-   │
-   ▼
-Data Cleaning
-   │
-   ▼
-Exploratory Data Analysis
-   │
-   ▼
-Feature Encoding
-   │
-   ▼
-Feature Scaling
-   │
-   ▼
-Train-Test Split
-   │
-   ▼
-Hyperparameter Tuning
-   │
-   ▼
-Train 7 ML Models
-   │
-   ▼
-Model Comparison
-   │
-   ▼
-Best Model Selection
-   │
-   ▼
-Prediction & Recommendation
+Validate CSV → remove exact duplicates → split train/test
+                                         ↓
+                         Training-only charge threshold
+                                         ↓
+                  Cross-validation of preprocessing + models
+                                         ↓
+                        Select by training CV F1
+                                         ↓
+                  Evaluate winner on held-out test rows
+                                         ↓
+                   Save pipeline + threshold + metrics
 ```
 
----
+The default run compares a dummy baseline, logistic regression, and random forest.
+The optional extended run compares all seven learned classifiers from the original
+project (including CatBoost, XGBoost, LightGBM, SVM, and KNN), plus the dummy baseline.
+The notebook adds training-data exploration and permutation feature importance.
 
-# 🤖 Machine Learning Models
+## Run locally
 
-The following supervised learning algorithms were implemented and compared.
-
-| Model               |   Accuracy |   F1 Score |    ROC-AUC |
-| ------------------- | ---------: | ---------: | ---------: |
-| Logistic Regression |     91.04% |     0.9111 |     0.9433 |
-| Random Forest       |     94.03% |     0.9380 |     0.9480 |
-| XGBoost             |     93.66% |     0.9344 |     0.9532 |
-| LightGBM            |     93.66% |     0.9344 |     0.9488 |
-| ⭐ CatBoost          | **94.78%** | **0.9453** | **0.9439** |
-| SVM                 |     92.91% |     0.9278 | **0.9659** |
-| KNN                 |     91.42% |     0.9125 |     0.9503 |
-
----
-
-# 🏆 Best Model
-
-After comparing all seven models, **CatBoost** achieved the best overall performance.
-
-| Metric                 |               Score |
-| ---------------------- | ------------------: |
-| Model                  |          ⭐ CatBoost |
-| Accuracy               |          **94.78%** |
-| F1 Score               |          **0.9453** |
-| ROC-AUC                |          **0.9439** |
-| Cross Validation Score | **0.9297 ± 0.0124** |
-
----
-
-# 🔧 Hyperparameter Tuning
-
-Randomized Search was used to optimize each model.
-
-Example of optimized parameters:
-
-| Model               | Best Parameters                |
-| ------------------- | ------------------------------ |
-| Logistic Regression | C = 1                          |
-| Random Forest       | 200 Trees, Depth = 15          |
-| XGBoost             | 200 Trees, Depth = 6           |
-| LightGBM            | 200 Trees, 31 Leaves           |
-| CatBoost            | Depth = 6, Learning Rate = 0.1 |
-| SVM                 | C = 1, Gamma = scale           |
-| KNN                 | k = 5                          |
-
----
-
-# 📈 Model Evaluation
-
-Models were evaluated using:
-
-* Accuracy
-* Precision
-* Recall
-* F1 Score
-* ROC-AUC
-* Cross Validation
-
-This provides a comprehensive comparison rather than relying solely on accuracy.
-
----
-
-# 🧪 Recommendation System Testing
-
-The recommendation pipeline was evaluated using **6 realistic customer profiles**.
-
-| Test Cases              | Result    |
-| ----------------------- | --------- |
-| Total Test Cases        | 6         |
-| Correct Predictions     | 5         |
-| Recommendation Accuracy | **83.3%** |
-
-### Example Test Cases
-
-* Young Healthy Professional
-* Middle-aged Smoker
-* Senior Citizen
-* Young Family
-* Overweight Smoker
-* Healthy Senior
-
-The system correctly classified **5 out of 6** customer profiles.
-
----
-
-# 📸 Result Images
-
-This project generates multiple visualizations during Exploratory Data Analysis (EDA), Model Training, Hyperparameter Tuning, and Model Evaluation.
-
-📂 **View all screenshots here →** **[Result_Images](Result_Images/)**
-
----
-
-## 📊 Dataset Overview
-
-![Dataset Overview](Result_Images/Dataset.png)
-
-*Figure 1: Sample of the health insurance dataset showing key features like age, sex, bmi, children, smoker, region, and charges.*
-
----
-
-## 🔗 Feature Correlation Matrix
-
-![Feature Correlation Matrix](Result_Images/Feature%20Correlation%20Matrix%20.png)
-
-*Figure 2: Correlation heatmap showing relationships between numerical features.*
-
----
-
-## 📈 Comprehensive Model Comparison
-
-![Model Comparison](Result_Images/COMPREHENSIVE%20MODEL%20COMPARISON.png)
-
-*Figure 3: Performance comparison of all 7 machine learning models across multiple metrics (Accuracy, F1 Score, Precision, Recall, ROC-AUC).*
-
----
-
-## 🔍 Feature Importance Analysis
-
-![Feature Importance Analysis](Result_Images/FEATURE%20IMPORTANCE%20ANALYSIS.png)
-
-*Figure 4: Top features influencing insurance charge predictions with their importance scores.*
-
----
-
-## 🎯 Final Recommendation
-
-![Final Recommendation](Result_Images/Final%20Recomendation.png)
-
-*Figure 5: Final model recommendation showing the best performing algorithm for deployment.*
-
----
-
-## 📊 Additional Visualizations
-
-### Confusion Matrices
-
-![Confusion Matrices](Result_Images/Confusion%20Matrices.png)
-
-*Figure 6: Confusion matrices for all 7 models showing prediction accuracy per class.*
-
----
-
-### ROC-AUC Curves
-
-![ROC Curves](Result_Images/ROC%20Curves.png)
-
-*Figure 7: ROC-AUC curves comparing model performance across different threshold values.*
-
----
-
-### SHAP Summary Plot
-
-![SHAP Summary](Result_Images/SHAP%20Summary.png)
-
-*Figure 8: SHAP feature importance summary showing the impact of each feature on predictions.*
-
----
-
-### LIME Explanation
-
-![LIME Explanation](Result_Images/LIME%20Explanation.png)
-
-*Figure 9: Local interpretable model-agnostic explanations (LIME) for a single prediction.*
-
----
-
-# 🛠 Technologies Used
-
-* Python
-* Google Colab
-* Pandas
-* NumPy
-* Matplotlib
-* Seaborn
-* Scikit-Learn
-* CatBoost
-* XGBoost
-* LightGBM
-* Joblib
-
----
-
-# ▶ Installation
+Use Python **3.10–3.12**. Run commands from the repository root.
 
 ```bash
-git clone https://github.com/hrnareshabd/Health-Insurance-Recommendation.git
-
-cd Health-Insurance-Recommendation
-
-pip install -r requirements.txt
-
-jupyter notebook
+git clone https://github.com/hrnareshabd/Health-Insurance-Recommendation-System.git
+cd Health-Insurance-Recommendation-System
+python -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
+python -m insurance_model.pipeline train
+python -m insurance_model.pipeline predict --profile examples/profile.json
 ```
 
-Or simply open the notebook using **Google Colab**.
+On Windows PowerShell, replace the activation command with
+`.venv\Scripts\Activate.ps1`. If your system uses `python3`, use that to create the
+environment. Training writes `artifacts/model.joblib` and `artifacts/metrics.json`.
+The example profile is fictional and has no observed outcome; it demonstrates input/output.
 
----
+For notebooks:
 
-# 📂 Project Structure
+```bash
+python -m pip install -r requirements-notebook.txt
+jupyter lab notebooks/health_insurance_analysis.ipynb
+```
+
+For the extended model comparison:
+
+```bash
+python -m pip install -r requirements-all-models.txt
+python -m insurance_model.pipeline train --all-models --output artifacts/all-models
+```
+
+If LightGBM reports a missing OpenMP library on macOS, install its platform runtime
+as described in the [official LightGBM installation guide](https://lightgbm.readthedocs.io/en/stable/Installation-Guide.html),
+or use Colab/the default two-model run. Missing optional models fail explicitly.
+
+## Data and prediction inputs
+
+`Insurance.csv` contains **1,338 rows**, with **1,337 distinct records** after removing
+one exact duplicate. No missing values were found in the included file.
+
+| Field | Accepted input |
+| --- | --- |
+| `age` | Integer, 18–64 (dataset coverage) |
+| `sex` | `female` or `male` (dataset categories) |
+| `bmi` | Positive finite number; out-of-training-range values are flagged |
+| `children` | Integer, 0–5 (dataset coverage) |
+| `smoker` | `yes` or `no` |
+| `region` | `northeast`, `northwest`, `southeast`, or `southwest` |
+
+`charges` is used only during training. A charge above the **training partition's
+median** is High Charges; a charge at or below it is Low Charges. This differs from
+the original full-dataset median of 9,382.033. The exact training threshold is saved
+with each model. Probabilities are uncalibrated, and no plan recommendation is returned.
+
+## Results and reproducibility
+
+See [verified run details](docs/RESULTS.md). Each training run saves the selected model,
+CV scores, test metrics, dataset checksum, seed, and software versions in `metrics.json`.
+Dependency ranges are installation constraints, not a fully locked environment.
+
+The old 94.78% CatBoost accuracy and six-profile “83.3% recommendation accuracy” are
+**historical, not verified results of this corrected workflow**. The original analysis
+used full-data preprocessing and test-based selection, and the fictional profiles
+did not have observed outcomes. Read the [methodology](docs/METHODOLOGY.md) before
+comparing old and new scores.
+
+Run the regression checks with:
+
+```bash
+python -m unittest discover -s tests -v
+```
+
+GitHub Actions runs the core tests and command-line train/predict workflow on Python
+3.10, 3.11, and 3.12. The optional model suite and live Colab service are separate checks.
+
+## Repository guide
 
 ```text
-Health-Insurance-Recommendation
-
-│──Health_Insurance_Recommendation.ipynb
-
-│── Insurance.csv
-
-│── Result_images/
-
-│── README.md
-
-│── LICENSE
+insurance_model/                  Shared training and prediction implementation
+notebooks/health_insurance_analysis.ipynb  Maintained notebook; local + Colab setup
+notebooks/archive/                Original research, marked historical
+Insurance.csv                     Original dataset, preserved unchanged
+examples/profile.json             Example prediction input
+tests/                            Regression checks
+docs/                             Data, methodology, results, contribution roadmap
+.github/                          CI, issue templates, pull-request template
+Result_Images/                    Historical screenshots
+requirements*.txt                 Core, notebook, optional model dependencies
+CONTRIBUTING.md                    How to give feedback and contribute
+SECURITY.md                        Private vulnerability-reporting contact
+LICENSE                           MIT license for project code
 ```
 
----
+The old root-level notebook URL remains as a pointer to the maintained and archived versions.
 
-# 🔮 Future Improvements
+## Original research
 
-* Deploy using Streamlit
-* Build a REST API using FastAPI
-* Add SHAP Explainable AI
-* Dockerize the project
-* Deploy on AWS or Azure
-* Add CI/CD with GitHub Actions
+Developed by **Naresh Hosahalli Rudresh** in Google Colab.
 
----
+- [Original shared Colab notebook](https://colab.research.google.com/drive/1Fk20VF42ExHkTi-eTslUbDb3J1uUfG9B?usp=sharing)
+- [Archived original notebook](notebooks/archive/original_research.ipynb)
+- [Historical result images](Result_Images/)
 
-# 👨‍💻 Author
+The original Colab cells were compared with the GitHub notebook during this review
+and matched. The Drive notebook remains the historical original; the maintained
+workflow is the GitHub notebook linked above.
 
-**Naresh Hosahalli Rudresh**
+## Author and contact
 
-🎓 MSc Data Science
+**Naresh Hosahalli Rudresh** · MSc Data Science · Germany
 
-📍 Germany
+[GitHub](https://github.com/hrnareshabd) · [LinkedIn](https://www.linkedin.com/in/naresh-h-r/)
+· **hrnaresh39@gmail.com**
 
-* GitHub: https://github.com/hrnareshabd
-* LinkedIn: https://www.linkedin.com/in/naresh-h-r/
-
----
-
-# ⭐ Support
-
-If you found this project useful,
-
-⭐ Star this repository
-
-🍴 Fork it
-
-📢 Share it with others
-
----
-
-# 📜 License
-
-This project is licensed under the MIT License.
+For project questions and suggestions, prefer GitHub Issues so others can join the
+discussion. Code is licensed under [MIT](LICENSE); the dataset's original source and
+reuse terms still need confirmation, as tracked in [DATA.md](docs/DATA.md).
